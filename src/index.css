@@ -1,0 +1,96 @@
+
+.grid__item {
+    padding: 4px 8px 6px 8px;
+}
+
+.grid__item .input {
+    width: 100%
+}
+
+
+.Suchen .accordion.accordion--open .accordion__head .Suche {
+    opacity: 1;
+    transform: translateZ(0);
+}
+
+.Suche {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    max-height: 28px;
+}
+
+.Suche.Suche--accordion {
+    width: 40%;
+    float: right;
+    margin-left: auto;
+    order: 2;
+}
+
+.Suchen .accordion .accordion__head .accordion__head--search--wrapper {
+    overflow: hidden;
+    display: inline-flex;
+}
+
+.accordion--open .accordion--trigger.accordion__head--search--wrapper {
+    max-width: 50%;
+}
+
+.accordion__head--search--wrapper:before {
+    display: inline-block;
+}
+
+.Suchen .accordion .accordion__head .Suche {
+    transition: opacity .3s,transform .3s;
+    opacity: 0;
+    transform: translate3d(100%,0,0);
+    position: absolute;
+    top: 4px;
+    right: 9px;
+}
+
+.Suche input {
+    width: 100%;
+    background-color: transparent;
+    border-width: 0 0 1px;
+    padding: 4px 8px;
+    border-radius: 0!important;
+}
+
+.Suche label {
+    max-height: 28px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.Suche label i {
+    opacity: .6;
+}
+
+.Suchen .accordion .accordion__head .accordion__head--search--wrapper .accordion__head--search {
+    max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    transition: max-width .3s;
+}
+
+.accordion .accordion__item {
+    padding: 0;
+}
+
+.right {
+    text-align: right;
+}
+
+#tappOverview {
+    transition: height 0.3s ease-in;
+}

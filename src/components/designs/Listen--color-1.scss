@@ -1,0 +1,27 @@
+.Listen {
+    &.color--1 {
+        .ListItem {
+            border-bottom-color: #494949;
+            .ListItem__Arrow {
+                i {
+                    &:before {
+                        color: #fff;
+                    }
+                }
+            }
+            &.ListItem--clickable {
+                &:hover {
+                    background-color: #393939;
+                }
+            }
+            &.ListItem--accordion {
+                &:hover {
+                    background-color: #161616;
+                }
+                &.ListItem--accordion--open {
+                    background-color: #161616;
+                }
+            }
+        }
+    }
+}
