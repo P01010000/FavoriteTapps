@@ -1,18 +1,31 @@
 /* eslint-disable no-console */
-import modeSwitchInit from './components/modeswitch/modeSwitch';
-import personFinderInit from './components/personFinder/personFinder';
-import SERVER_URL from './constants/server-url';
+
+import './index.css';
+import './components/designs/Listen.scss';
+import './components/designs/Listen--color-1.scss';
+import './components/designs/Suche.scss';
+import TappList from './components/tapp/tappList';
+import TappLoader from './components/tapp/tappLoader';
+import AddTapp from './components/addTapp/addTapp';
 
 const init = async () => {
     await chayns.ready;
 
-    console.info('ServerUrl for current environment:', SERVER_URL);
+    const tappList = new TappList();
+    const tappLoader = new TappLoader(tappList);
 
-    // initialise a Modeswitch
-    modeSwitchInit();
+    tappList.addCallback(async () => {
+        chayns.showWaitCursor();
+        tappLoader.load()
+        .then(({ data, reachedEnd }) => tappList.addTapps(data, reachedEnd))
+        .finally(chayns.hideWaitCursor);
+    });
 
-    // start Personfinder
-    personFinderInit();
+    const { data, reachedEnd } = await tappLoader.load();
+    tappList.addTapps(data, reachedEnd);
+    chayns.hideWaitCursor();
+
+    AddTapp();
 };
 
 init();

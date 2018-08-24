@@ -13,31 +13,79 @@
     <link rel="stylesheet" href="//chayns-res.tobit.com/API/V3.1/css/chayns.min.css">
 </head>
 <body>
-<div class="tapp" style="height: 380px">
+<div class="tapp color--1" style="min-height: 380px">
     <div class="tapp__intro">
-        <h1 class="headline">chayns user selector</h1>
-        <p>This tapp lets chayns® Managers switch to an 'admin mode' which displays secured content and enables to
-            select users via the chayns® person finder. Selected users will be added to a list that can be seen in both
-            admin and user modes.This is an example of a ModeSwitch implementation and shows you how to secure content
-            by UAC groups.</p>
+        <h1 class="headline">My Favorite Sites</h1>
+        <p>Hier findest du eine Übersicht über alle deine Lieblings Chayns Sites.
+            Außerdem kannst du <a href="javascript:void(scrollToFormular())">hier</a> weitere Sites hinzufügen.</p>
     </div>
 
-    <div class="tapp__content">
-        <input id="personFinder" class="input admin-only" type="text" style="width:100%;" finder="person" placeholder="Search or users">
-
-        <div class="accordion accordion--open">
-            <div class="accordion__head">User List</div>
-            <div class="accordion__body">
-                <div class="accordion__content">
-                   Du hast noch keine Personen ausgewählt.
+    <div class="tapp__content Suchen Listen color--1">
+        <div class="accordion" data-group="site" style="overflow: hidden; margin-top: 30px;">
+             <div class="accordion__head search">
+                 <div class="accordion--trigger accordion__head--search--wrapper">
+                     <div class="accordion--trigger accordion__head--search">
+                         Übersicht
+                     </div>
+                 </div>
+                 <div class="Suche Suche--accordion chayns__border-color--50">
+                     <input type="text" placeholder="Suche" value="" id="searchFilter">
+                     <label><i class="fa fa-search"></i></label>
+                 </div>
+             </div>
+             <div class="accordion__body" id="tappOverview">
+                 <div class="accordion__content">
+                     <div class="right">
+                         <a href="#" class="right" id="load">Mehr anzeigen</a>
+                     </div>
+                 </div>
+             </div>
+         </div>
+ 
+        <div class="accordion" data-group="site" id = "request">
+            <div class="accordion__head">Site hinzufügen
+                <div class="badge right">
+                    <i class="fa fa-plus"></i>
                 </div>
-                <div id="usersList" class="accordion__content"></div>
+            </div>
+            <div class="accordion__body">
+                <form id="requestTapp" action="javascript: void(0)">
+                    <div class="grid">
+                        <div class="grid__item col-1-1-desktop col-1-1-mobile">
+                            <input class="input" id="requestTappName" name="name" type="text" placeholder="Name" required>
+                        </div>
+                        <div class="grid__item col-1-1-desktop col-1-1-mobile">
+                            <input class="input" id="requestTappAddress" name="address" type="text" placeholder="Adresse" required>
+                        </div>
+                        <div class="grid__item col-1-2-desktop col-1-1-mobile">
+                            <input class="input" id="requestTappZip" name="zip" type="text" placeholder="PLZ" required>
+                        </div>
+                        <div class="grid__item col-1-2-desktop col-1-1-mobile">
+                            <input class="input" id="requestTappPlace" name="place" type="text" placeholder="Ort" required>
+                        </div>
+                        <div class="grid__item col-1-1-desktop col-1-1-mobile">
+                            <input class="input" id="requestTappEmail" name="email" type="email" placeholder="E-Mail" required>
+                        </div>
+                        <div class="grid__item col-1-1-desktop col-1-1-mobile">
+                            <textarea class="input" id="requestTappComment" name="comment" type="text" placeholder="Kommentar" autogrow></textarea>
+                        </div>
+                        <div class="grid__item col-1-1-desktop col-1-1-mobile" style="text-align: center; margin: 15px 0;">
+                            <input type="button" class="button" value="Hinzufügen">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
+     </div>
 </div>
 
 <!--Load the js chayns API-->
 <script src="https://chayns-res.tobit.com/API/V3.1/js/chayns.min.js"></script>
+<script type="text/javascript">
+    function scrollToFormular() {
+        let a = document.querySelector("#request.accordion:not(.accordion--open) .accordion__head");
+        a && (a.click() || a.scrollIntoView({behavior: "smooth"}));
+    }
+</script>
 </body>
 </html>
